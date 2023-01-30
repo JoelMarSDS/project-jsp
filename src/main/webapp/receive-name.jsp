@@ -7,13 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Jsp Novamente</h1>
-	
-	<form action="receive-name.jsp">
-		<input type="text" name="name">
-		<input type="text" name="age">
+	<%
+		String nome = request.getParameter("name");
+		String age = request.getParameter("age");
 		
-		<input type="submit" value="Enviar">
-	</form>
+		out.println("Nome: ".concat(nome));
+		out.println("Idade: ".concat(age));
+	%>
 </body>
 </html>
