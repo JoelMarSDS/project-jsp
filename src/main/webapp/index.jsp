@@ -9,11 +9,23 @@
 <body>
 	<h1>Jsp Novamente</h1>
 	
-	<form action="receive-name.jsp">
-		<input type="text" name="name">
-		<input type="text" name="age">
+	<form action="LoginServilet" method="post">
+	
+		<table>
+			<tr>
+				<td><label>Usuário:</label></td>
+				<td><input type="text" name="username"></td>
+			</tr>
+			<tr>
+				<td><label>Senha:</label></td>
+				<td><input type="password" name="password"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Enviar"></td>
+			</tr>
+		</table>
 		
-		<input type="submit" value="Enviar">
 	</form>
+	<h4>${ msg }</h4>
 </body>
 </html>
