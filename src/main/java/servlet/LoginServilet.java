@@ -1,7 +1,6 @@
 package servlet;
 
 import static java.util.Objects.nonNull;
-import static java.util.Objects.isNull;
 
 import java.io.IOException;
 
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.LoginModel;
 
-@WebServlet(urlPatterns = {"/system/LoginServilet","/LoginServilet"})
+@WebServlet(urlPatterns = { "/system/LoginServilet", "/LoginServilet" })
 public class LoginServilet extends HttpServlet {
 
 	public LoginServilet() {
@@ -26,19 +25,18 @@ public class LoginServilet extends HttpServlet {
 
 		var username = request.getParameter("username");
 		var password = request.getParameter("password");
-		var url = request.getParameter("url");
 
 		if (nonNull(username) && !username.isEmpty() && nonNull(password) && !password.isEmpty()) {
 
 			LoginModel loginModel = new LoginModel();
-			
+
 			loginModel.setUsername(username);
 			loginModel.setPassword(password);
-			
+
 			if (loginModel.getUsername().equals("admin") && loginModel.getPassword().equals("admin")) {
-				
+
 				request.getSession().setAttribute("username", loginModel.getUsername());
-				
+
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/system/home.jsp");
 				request.setAttribute("msg", "Usuario Logado");
 				dispatcher.forward(request, response);
@@ -47,7 +45,7 @@ public class LoginServilet extends HttpServlet {
 				request.setAttribute("msg", "Informe o login e a senha corretamente");
 				dispatcher.forward(request, response);
 			}
-			
+
 		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 			request.setAttribute("msg", "Informe o login e a senha");
