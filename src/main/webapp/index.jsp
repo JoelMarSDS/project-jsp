@@ -2,76 +2,54 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-	crossorigin="anonymous">
-</head>
+	<jsp:include page="system/template/head-pag.jsp"></jsp:include>
 <body>
-	<div class="container">
-		<div class="row justify-content-center align-items-center vh-100">
-			<div class="col-5">
-				<h1 class="text-center">Projeto Jsp</h1>
-				<form action="LoginServilet" method="post" class="needs-validation" novalidate>
-					<div class="row">
-						<div class="col">
-							<label for="inputUsername" class="form-label">Usuário</label>
-							<input type="text" class="form-control" name="username" id="inputUsername" required="required">
-							<div class="invalid-feedback">
-								Campo Obrigatorio!
-							</div>
-							<div class="valid-feedback">
-								Ok!
-							</div>
+	<div class="container-fluid position-relative d-flex p-0">
+		<!-- Spinner Start -->
+		<div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+			<div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+				<span class="sr-only">Loading...</span>
+			</div>
+		</div>
+		<!-- Spinner End -->
+		
+		<!-- Sign In Start -->
+		<div class="container-fluid">
+			<div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+				<div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+					<div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+						<div class="row d-flex align-items-center justify-content-between mb-3">
+							<h3 class="text-primary text-center">Projeto Jsp</h3>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<label for="inputPassword" class="form-label">Senha</label>
-							<input type="password" class="form-control" name="password" id="inputPassword" required="required">
-							<div class="invalid-feedback">
-								Campo Obrigatorio!
+						<form action="LoginServilet" method="post" class="needs-validation" novalidate>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="floatingInput" name="username" placeholder="User" required>
+								<label for="floatingInput">Usuário</label>
+								<div class="invalid-feedback">
+									Campo Obrigatorio!
+								</div>
+								<div class="valid-feedback">
+									Ok!
+								</div>
 							</div>
-							<div class="valid-feedback">
-								Ok!
+							<div class="form-floating mb-4">
+								<input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
+								<label for="floatingPassword">Password</label>
+								<div class="invalid-feedback">
+									Campo Obrigatorio!
+								</div>
+								<div class="valid-feedback">
+									Ok!
+								</div>
 							</div>
-						</div>
+							<button type="submit" class="btn btn-primary py-3 w-100 mb-4">Entrar</button>
+						</form>
+						<h4 class="text-primary text-center">${ msg }</h4>
 					</div>
-					<div class="row">
-						<div class="col-auto mt-2">
-							<button type="submit" class="btn btn-primary">Entrar</button>
-						</div>
-					</div>
-				</form>
-				<h4 class="text-center">${ msg }</h4>
+				</div>
 			</div>
 		</div>
 	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-		crossorigin="anonymous"></script>
-	<script type="text/javascript">
-		(() => {
-			  'use strict'
-	
-			  const forms = document.querySelectorAll('.needs-validation')
-	
-			  Array.from(forms).forEach(form => {
-			    form.addEventListener('submit', event => {
-			      if (!form.checkValidity()) {
-			        event.preventDefault()
-			        event.stopPropagation()
-			      }
-	
-			      form.classList.add('was-validated')
-			    }, false)
-			  })
-			})()
-	</script>
+	<jsp:include page="system/template/script-pag.jsp"></jsp:include>
 </body>
 </html>

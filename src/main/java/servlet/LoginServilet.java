@@ -44,7 +44,7 @@ public class LoginServilet extends HttpServlet {
 	
 					request.getSession().setAttribute("username", loginModel.getUsername());
 	
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/system/home.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/system/home/home.jsp");
 					request.setAttribute("msg", "Usuario Logado");
 					dispatcher.forward(request, response);
 				} else {
