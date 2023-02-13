@@ -28,6 +28,13 @@ public class LoginServilet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String acction = request.getParameter("acction");
+		if(nonNull(acction) && 	!acction.isEmpty() && acction.equals("logout")) {
+			request.getSession().invalidate();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
 		try {
 			var username = request.getParameter("username");
@@ -44,7 +51,8 @@ public class LoginServilet extends HttpServlet {
 	
 					request.getSession().setAttribute("username", loginModel.getUsername());
 	
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/system/home/home.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/system/template/generic-template.jsp");
+					request.setAttribute("page", "../home/home.jsp");
 					request.setAttribute("msg", "Usuario Logado");
 					dispatcher.forward(request, response);
 				} else {
