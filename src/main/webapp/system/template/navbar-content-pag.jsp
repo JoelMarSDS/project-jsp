@@ -87,7 +87,7 @@
 			<div class="nav-item dropdown">
 				<a href="#" class="nav-link dropdown-toggle"
 					data-bs-toggle="dropdown"> <img class="rounded-circle me-lg-2"
-					src="../assets/img/user.jpg" alt=""
+					src="<%= request.getContextPath() %>/assets/img/user.jpg" alt=""
 					style="width: 40px; height: 40px;"> <span
 					class="d-none d-lg-inline-flex"><%= request.getSession().getAttribute("username") %></span>
 				</a>
