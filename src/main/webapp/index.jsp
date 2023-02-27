@@ -2,11 +2,11 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-	<jsp:include page="system/template/head-pag.jsp"></jsp:include>
+	<jsp:include page="system/template/componente/head-pag.jsp"></jsp:include>
 <body>
 	<div class="container-fluid position-relative d-flex p-0">
 		
-		<jsp:include page="system/template/loading-pag.jsp"></jsp:include>
+		<jsp:include page="system/template/componente/loading-pag.jsp"></jsp:include>
 		
 		<!-- Sign In Start -->
 		<div class="container-fluid">
@@ -45,6 +45,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="system/template/script-pag.jsp"></jsp:include>
+	<jsp:include page="system/template/componente/script-pag.jsp"></jsp:include>
 </body>
 </html>
