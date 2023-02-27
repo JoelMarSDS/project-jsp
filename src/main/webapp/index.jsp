@@ -2,16 +2,11 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-	<jsp:include page="system/template/head-pag.jsp"></jsp:include>
+	<jsp:include page="system/template/componente/head-pag.jsp"></jsp:include>
 <body>
 	<div class="container-fluid position-relative d-flex p-0">
-		<!-- Spinner Start -->
-		<div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-			<div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-				<span class="sr-only">Loading...</span>
-			</div>
-		</div>
-		<!-- Spinner End -->
+		
+		<jsp:include page="system/template/componente/loading-pag.jsp"></jsp:include>
 		
 		<!-- Sign In Start -->
 		<div class="container-fluid">
@@ -50,6 +45,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="system/template/script-pag.jsp"></jsp:include>
+	<jsp:include page="system/template/componente/script-pag.jsp"></jsp:include>
 </body>
 </html>

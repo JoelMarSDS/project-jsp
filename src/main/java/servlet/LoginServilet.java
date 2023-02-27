@@ -28,6 +28,13 @@ public class LoginServilet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String acction = request.getParameter("acction");
+		if(nonNull(acction) && 	!acction.isEmpty() && acction.equals("logout")) {
+			request.getSession().invalidate();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
 		try {
 			var username = request.getParameter("username");
@@ -44,19 +51,14 @@ public class LoginServilet extends HttpServlet {
 	
 					request.getSession().setAttribute("username", loginModel.getUsername());
 	
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/system/home/home.jsp");
-					request.setAttribute("msg", "Usuario Logado");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/SideBarServilet?item=home");
 					dispatcher.forward(request, response);
 				} else {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-					request.setAttribute("msg", "Informe o login e a senha corretamente");
-					dispatcher.forward(request, response);
+					dispatcher(request, response, "/index.jsp", "Informe o login e a senha corretamente");
 				}
 	
 			} else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-				request.setAttribute("msg", "Informe o login e a senha");
-				dispatcher.forward(request, response);
+				dispatcher(request, response, "/index.jsp", "Informe o login e a senha");
 			}
 	
 			LoginModel loginModel = new LoginModel();
@@ -66,16 +68,22 @@ public class LoginServilet extends HttpServlet {
 	
 			logger.info(String.format("Usuário: %s | Senha: %s", username, password));
 		} catch (Exception e) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-			request.setAttribute("msg", "Estamos resolvendo o ocorrido, tente novamente mais tarde");
-			dispatcher.forward(request, response);
+			dispatcher(request, response, "/index.jsp", "Estamos resolvendo o ocorrido, tente novamente mais tarde");
 			e.printStackTrace();
 		}
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
+	}
+
+
+	private void dispatcher(HttpServletRequest request, HttpServletResponse response, String path, String msg)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+		request.setAttribute("msg", msg);
+		dispatcher.forward(request, response);
 	}
 
 }
